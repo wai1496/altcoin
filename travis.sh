@@ -75,7 +75,7 @@ elif [ "$matrix" = "Win32Gui" ]; then
 	export PACKAGES="python3 nsis g++-mingw-w64-i686 wine1.6 bc" 
 	export RUN_TESTS=false
 	export GOAL="deploy" 
-	export BITCOIN_CONFIG="--with-gui --disable-tests --enable-reduce-exports"
+	export BITCOIN_CONFIG="--with-gui --disable-debug --disable-bench --disable-zmq --without-libs --disable-tests --enable-reduce-exports"
 
 # Cross-Mac
 elif [ "$matrix" = "Cross-Mac" ]; then
