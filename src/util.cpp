@@ -87,6 +87,9 @@
 
 // Work around clang compilation problem in Boost 1.46:
 // /usr/include/boost/program_options/detail/config_file.hpp:163:17: error: call to function 'to_internal' that is neither visible in the template definition nor found by argument-dependent lookup
+const char * const BITCOIN_CONF_FILENAME = "bitgoldencoin.conf";
+const char * const BITCOIN_PID_FILENAME = "bitgoldencoin.pid";
+const char * const DEFAULT_DEBUGLOGFILE = "debug.log";
 // See also: http://stackoverflow.com/questions/10020179/compilation-fail-in-boost-librairies-program-options
 //           http://clang.debian.net/status.php?version=3.0&key=CANNOT_FIND_FUNCTION
 namespace boost {
@@ -461,7 +464,7 @@ boost::filesystem::path GetDefaultDataDir()
     // Unix: ~/.bitcoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Bitcoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "BitGoldenCoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -471,10 +474,10 @@ boost::filesystem::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/Bitcoin";
+    return pathRet / "Library/Application Support/BitGoldenCoin";
 #else
     // Unix
-    return pathRet / ".bitcoin";
+    return pathRet / ".bitgoldencoin";
 #endif
 #endif
 }
