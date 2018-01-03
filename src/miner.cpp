@@ -405,10 +405,12 @@ void static BitcoinMiner(const CChainParams& chainparams)
                     {
                         LOCK(cs_vNodes);
                         fvNodesEmpty = vNodes.empty();
+                        LogPrintf("%s\n", vNodes.empty() ? "empty": "full");
                     }
                     if (!fvNodesEmpty && !IsInitialBlockDownload())
                         break;
                     MilliSleep(1000);
+                    LogPrintf("miner waiting...\n");
                 } while (true);
             }
 

@@ -1584,13 +1584,23 @@ bool IsInitialBlockDownload()
 {
     const CChainParams& chainParams = Params();
     LOCK(cs_main);
-    if (fImporting || fReindex)
+    if (fImporting || fReindex){
+        LogPrintf("Importing...\n");
         return true;
-    if (fCheckpointsEnabled && chainActive.Height() < Checkpoints::GetTotalBlocksEstimate(chainParams.Checkpoints()))
+    }
+    if (fCheckpointsEnabled && chainActive.Height() < Checkpoints::GetTotalBlocksEstimate(chainParams.Checkpoints())){
+        LogPrintf("Checkpoints...\n");
         return true;
+    }
     static bool lockIBDState = false;
     if (lockIBDState)
         return false;
+    LogPrintf("activeHeight: %u, BestHeight:%u, BestTime: %u, MaxTipAge: %u\n"
+            , chainActive.Height()
+            , pindexBestHeader->nHeight
+            , pindexBestHeader->GetBlockTime()
+            , chainParams.MaxTipAge());
+
     bool state = (chainActive.Height() < pindexBestHeader->nHeight - 24 * 6 ||
             pindexBestHeader->GetBlockTime() < GetTime() - chainParams.MaxTipAge());
     if (!state)
