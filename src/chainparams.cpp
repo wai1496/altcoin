@@ -15,6 +15,9 @@
 #include <assert.h>
 
 #include <chainparamsseeds.h>
+#include <boost/assign.hpp>
+#include <boost/assign/list_of.hpp>
+
 
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
@@ -120,15 +123,15 @@ public:
 
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.emplace_back("p1.bitgoldencoin.net", true);
-        vSeeds.emplace_back("p2.bitgoldencoin.net", true);
-        vSeeds.emplace_back("p3.bitgoldencoin.net", true);
-        vSeeds.emplace_back("p1.btgoldcoin.net", true);
-        vSeeds.emplace_back("p2.btgoldcoin.net", true);
-        vSeeds.emplace_back("p3.btgoldcoin.net", true);
-        vSeeds.emplace_back("p1.cadvb.cc", true);
-        vSeeds.emplace_back("p2.cadvb.cc", true);
-        vSeeds.emplace_back("p3.cadvb.cc", true);
+        vSeeds.push_back(CDNSSeedData("", "p1.bitgoldencoin.net"));
+        vSeeds.push_back(CDNSSeedData("", "p2.bitgoldencoin.net"));
+        vSeeds.push_back(CDNSSeedData("", "p3.bitgoldencoin.net"));
+        vSeeds.push_back(CDNSSeedData("", "p1.btgoldcoin.net"));
+        vSeeds.push_back(CDNSSeedData("", "p2.btgoldcoin.net"));
+        vSeeds.push_back(CDNSSeedData("", "p3.btgoldcoin.net"));
+        vSeeds.push_back(CDNSSeedData("", "p1.cadvb.cc"));
+        vSeeds.push_back(CDNSSeedData("", "p2.cadvb.cc"));
+        vSeeds.push_back(CDNSSeedData("", "p3.cadvb.cc"));
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 

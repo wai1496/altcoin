@@ -1,4 +1,5 @@
 *.tar.gz
+/depends/sources
 
 *.exe
 src/bitcoin
