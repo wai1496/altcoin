@@ -1,5 +1,5 @@
-Building Bitcoin
+Building BitGoldenCoin
 
-See doc/build-*.md for instructions on building bitcoind,
+See doc/build-*.md for instructions on building bitgoldencoind,
 the intended-for-services, no-graphical-interface, reference
 implementation of Bitcoin.
